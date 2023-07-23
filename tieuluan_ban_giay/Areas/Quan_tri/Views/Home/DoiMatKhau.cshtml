@@ -1,0 +1,89 @@
+﻿@model tieuluan_ban_giay.Models.Quan_Tri
+    @using tieuluan_ban_giay.Models
+@{
+    Layout = null;
+    Quan_Tri kh = (Quan_Tri)Session["TaiKhoan"];
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DoiMatKhau</title>
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="~/login/css/style.css" type="text/css" media="all" />
+</head>
+<body>
+    <form action="~/Quan_tri/Home/DoiMatKhau" method="post">
+
+        <div class="w3l-loginblock signinform">
+            <div class="logo">
+                <a class="brand-logo" href="index.html">Đổi mật khẩu</a>
+            </div>
+            <!-- main content -->
+            <div class="row map-content-9">
+                <div class="info-grids">
+
+                    <div class="form-grid">
+                        <div class="input-field">
+                            <label> Tên đăng nhập </label>
+                            <input style="width: 100%; padding: 12px; border-radius: 50px; border: 1px solid #ccc;" type="text" name="TenDN_Admin" value="@kh.TenDN_Admin" id="text" placeholder="Tên đăng nhập" required="">
+                        </div>
+                        <div style="margin-top: 25px;" class="input-field">
+                            <label> Mật khẩu</label>
+                            <input style="width: 100%; padding: 12px; border-radius: 50px; border: 1px solid #ccc;" type="password" name="MatKhau" id="Password" placeholder="Mật khẩu mới" required="">
+                        </div>
+                    </div>
+                    
+                    <a style="display: block; text-align: center; color: red;">@ViewBag.ThongBao2</a>
+                    <div style="height: 15px;">
+
+                    </div>
+                    <input style="margin-top: 15px; border-radius: 50px; border: 1px solid #ccc; font-size: 16px; padding: 10px; margin: auto; display: flex; justify-content: center; width: 50%; background-color: lightpink; color: #fff; font-weight: 800;" class="login" type="submit" value="Đổi mật khẩu" />
+
+                </div>
+                
+            </div>
+
+        </div>
+        <style>
+            .login:hover {
+                cursor: pointer;
+                background-color: deeppink;
+                transition: ease-in-out 0.3s;
+            }
+
+            .password .TenDN {
+                width: 100%;
+                padding: 12px;
+                border-radius: 50px;
+                border: 1px solid #ccc;
+            }
+
+            .input-field label {
+                font-weight: 700;
+                color: var(--heading-color);
+                margin-bottom: 10px;
+                display: block;
+            }
+
+                .input-field label::before {
+                    display: inline-flex;
+                    margin-right: 7px;
+                    margin-left: 5px;
+                    width: 8px;
+                    height: 8px;
+                    background-color: var(--primary-color);
+                    content: "";
+                    border-radius: 3px;
+                }
+        </style>
+        <!-- fontawesome v5-->
+        <script src="~/login/js/fontawesome.js"></script>
+    </form>
+</body>
+</html>

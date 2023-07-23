@@ -1,0 +1,113 @@
+﻿@model tieuluan_ban_giay.Models.Giay
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Quan_tri/Views/_LayoutPage1.cshtml";
+
+}
+
+<script src="https://cdn.tiny.cloud/1/rvt1c4e3h6r9h3z9d9rhddwydcn9o15cvz3keb7nt1b10mob/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>tinymce.init({
+        selector: '#mytextarea'
+    });</script>
+<div class="be-content">
+    <div class="main-content container-fluid">
+        <div class="container">
+            @*Thêm thuộc tính cho form để upload ảnh*@
+            @using (Html.BeginForm("ThemGiay", "QuanLyGiay", FormMethod.Post, new
+            {
+                @enctype =
+                     "multipart/form-data"
+            }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                   
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Tên Giày:</label>
+                        <div class="col-md-10">
+                            <input style="padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="text" size="70" name="TenGiay" value=""
+                                   required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Đơn giá:</label>
+                        <div class="col-md-10">
+                            <input style="padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="number" min="1" required name="DonGia"
+                                   value="@ViewBag.DonGia" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Mô tả:</label>
+                        <div class="col-md-10">
+
+                            <textarea name="MoTa" id="mytextarea">@ViewBag.MoTa</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Hình minh hoạ_1:</label>
+                        <div class="col-md-10">
+                            <input style="padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="file" src="~/fFileUpload" name="fFileUpload" />
+
+                            @*Thông báo lỗi yêu cầu phải chọn ảnh bìa*@
+                            @ViewBag.ThongBao
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Hình minh hoạ_2:</label>
+                        <div class="col-md-10">
+                            <input style="padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="file" src="~/fFileUpload" name="fFileUpload2" />
+
+                            @*Thông báo lỗi yêu cầu phải chọn ảnh bìa*@
+                            @ViewBag.ThongBao
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Giá gốc:</label>
+                        <div class="col-md-10">
+                            <input style="padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="number" min="1" required name="GiaGoc"
+                                   value="" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Thể loại:</label>
+                        <div class="col-md-10">
+                            <a >@Html.DropDownList("Ma_TheLoai")</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input style="border: 1px solid; border-color: #ccc; padding: 5px; background: #ccc; border-radius: 7px; color: #000; font-size: 14px;" type="submit" value="Thêm mới" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    @Html.ActionLink("Trở về", "Index")
+                </div>
+
+
+
+
+            }
+            </div>
+    </div>
+</div>
+
+<style>
+    #Ma_TheLoai {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        border: 1px solid;
+        border-color: #ccc;
+        margin-left: 20px;
+    }
+</style>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>

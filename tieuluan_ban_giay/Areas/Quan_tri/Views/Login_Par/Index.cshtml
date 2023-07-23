@@ -1,0 +1,14 @@
+﻿@using tieuluan_ban_giay.Models;
+@{
+    Quan_Tri qt = (Quan_Tri)Session["TaiKhoan2"];
+
+
+}
+
+    <div class="dropdown-menu" role="menu">
+        <div class="user-info">
+            <div class="user-name">@qt.Ten_Admin</div>
+            <div class="user-position online">Hoạt động</div>
+        </div><a class="dropdown-item" href="@Url.Action("DoiMatKhau","Home")"><span class="icon mdi mdi-face"></span>Đổi mật khẩu</a><a class="dropdown-item" href="@Url.Action("Login","Home")"><span class="icon mdi mdi-power"></span>Đăng xuất</a>
+    </div>
+

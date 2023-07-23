@@ -1,0 +1,20 @@
+﻿
+@using tieuluan_ban_giay.Models;
+@{
+    Khach_Hang kh = (Khach_Hang)Session["TaiKhoan"];
+
+
+}
+@{ 
+ViewBag.Title = "Lienhe";
+Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<div class="container-fluid pt-5">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span style="background-color: #f1f1f1;" class="px-2">Cảm ơn khách hàng @kh.Ten_Khach_Hang đã gửi phản hồi!</span></h2>
+    </div>
+    
+    </div>
+</div>
+

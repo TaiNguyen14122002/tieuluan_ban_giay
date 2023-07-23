@@ -1,0 +1,75 @@
+﻿@using tieuluan_ban_giay.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<tieuluan_ban_giay.Models.The_Loai>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Quan_tri/Views/_LayoutPage1.cshtml";
+}
+
+<div class="be-content">
+    <div class="main-content container-fluid">
+        <p>
+            <a style="border-radius: 5px; background-color: #4285f4; color: #fff; border: none;" href="@Url.Action("ThemTheLoai")" class="btn btn-warning" role="button">Thêm sản phẩm</a>
+        </p>
+        <table style="text-align: center;" class="table">
+            <tr>
+                <th>
+                    Tên thể loại
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Ten_TheLoai
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a style="border-radius: 5px;" href="@Url.Action("SuaTheLoai", new {id = item.Ma_TheLoai})" class="btn btn-warning" role="button">Sửa</a>
+                        <a style="border-radius: 5px;" href="@Url.Action("ChiTietTheLoai", new {id = item.Ma_TheLoai})" class="btn btn-primary" role="button">Chi tiết</a>
+
+                        <a style="border-radius: 5px;" href="@Url.Action("Xoa", new {id = item.Ma_TheLoai})" class="btn btn-danger" role="button">Xoá</a>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <div class="MenuTrang">
+            @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page }))
+        </div>
+        <style>
+            .MenuTrang {
+                display: inline;
+                text-align: center;
+            }
+
+            .pagination {
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                margin-bottom: 0;
+            }
+
+                .pagination li {
+                    padding: 5px;
+                }
+
+            .PagedList-skipToPrevious {
+                padding: 5px;
+                font-size: 14px;
+            }
+        </style>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿@using tieuluan_ban_giay.Models
+
+
+@{
+    QLBangiayyEntities db = new QLBangiayyEntities();
+
+    Khach_Hang kh = (Khach_Hang)Session["TaiKhoan"];
+    Giay giay = db.Giays.Find();
+
+}
+
+<div class="col-md-6">
+    <h4 class="mb-4">Đánh giá sản phẩm</h4>
+    <small>Chúng tôi dựa vào đánh giá của bạn để cải hiện tốt hơn</small>
+    <form action="~/DanhGia/ThemDanhGia" method="post">
+        <div class="d-flex my-3">
+            <p class="mb-0 mr-2">sao đánh giá :</p>
+            <select name="SoSao" id="dllRate">
+                <option value="5" selected="">★★★★★ ( 5 sao )</option>
+                <option value="4">★★★★✩ ( 4 sao )</option>
+                <option value="3">★★★✩✩ ( 3 sao )</option>
+                <option value="2">★★✩✩✩ ( 2 sao )</option>
+                <option value="1">★✩✩✩✩ ( 1 sao )</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Đánh giá của bạn :</label>
+            <textarea id="message" cols="30" rows="5" name="Danh_Gia" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="name">Mã khách hàng của bạn :</label>
+            <input type="text" class="form-control" readonly name="Ma_kh" value="@kh.Ma_Khach_Hang" id="name">
+        </div>
+        <div class="form-group">
+            <label for="name">Tên của bạn :</label>
+            <input type="text" class="form-control" readonly name="Ten" value="@kh.Ten_Khach_Hang" id="name">
+        </div>
+        <div class="form-group">
+            <label for="name">Mã sản phẩm :</label>
+            <input type="text" class="form-control" readonly name="Ma_SP" value="@giay.Ma_Giay" id="name">
+        </div>
+
+        <div class="form-group mb-0">
+            <input type="submit" value="Đánh giá" class="btn btn-primary px-3">
+        </div>
+    </form>
+</div>

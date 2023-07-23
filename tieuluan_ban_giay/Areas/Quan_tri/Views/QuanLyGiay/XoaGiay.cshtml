@@ -1,0 +1,53 @@
+﻿@model tieuluan_ban_giay.Models.Giay
+
+@{
+    ViewBag.Title = "XoaGiay";
+    Layout = "~/Areas/Quan_tri/Views/_LayoutPage1.cshtml";
+}
+
+<div class="be-content">
+    <div class="main-content container-fluid">
+        <h1>Bạn có chắc chắn muốn xoá thể loại này</h1>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Ma_Giay)
+
+        <div class="form-group">
+            Tên giày:
+            <div class="col-md-10">
+                <input style="width: 50%; padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="text" class="form-control" id="Ten_TheLoai" name="Ten_TheLoai" placeholder="" value="@Model.Ten_Giay" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            Đơn giá:
+            <div class="col-md-10">
+                <input style="width: 50%; padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="text" class="form-control" id="Ten_TheLoai" name="Ten_TheLoai" placeholder="" value="@Model.DonGia" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            Hình 1:
+            <div class="col-md-10">
+                <img src="~/Content/img/Shoes/nike/@Model.HinhMinhHoa" width="120">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input style="border: 1px solid; border-color: #ccc; padding: 5px; background: #ccc; border-radius: 7px; color: #000; font-size: 14px;" class="btn btn-warning" role="button" type="submit" value="Xoá giày" />
+            </div>
+        </div>
+    </div>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Trở về", "Index")
+            </div>
+        </div>
+    </div>
+</div>

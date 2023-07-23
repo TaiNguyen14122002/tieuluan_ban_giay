@@ -1,0 +1,105 @@
+﻿@using tieuluan_ban_giay.Models
+@{
+    ViewBag.Title = "DatHang";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="~/login/css/style.css" type="text/css" media="all" />
+    QLBangiayyEntities db = new QLBangiayyEntities();
+    Khach_Hang kh = (Khach_Hang)Session["TaiKhoan"];
+}
+
+<form action="~/GioHang/DatHang" method="post">
+    <div class="w3l-loginblock signinform">
+        <div class="logo">
+            <a class="brand-logo" href="index.html">Đặt hàng</a>
+        </div>
+        <!-- main content -->
+        <div class="row map-content-9">
+            <div class="info-grids">
+
+                <div class="form-grid">
+                    <div style="margin-top: 25px;" class="input-field">
+                        <label> Tên khách hàng </label>
+                        <input style="width: 100%; padding: 12px; border-radius: 50px; border: 1px solid #ccc;" type="text" name="Ten_Khach_Hang" id="Ten_Khach_Hang" value="@kh.Ten_Khach_Hang" placeholder="Nhập tên khách hàng" required="">
+                    </div>
+                    <div style="margin-top: 25px;" class="input-field">
+                        <label> Địa chỉ khách hàng </label>
+                        <input style="width: 100%; padding: 12px; border-radius: 50px; border: 1px solid #ccc;" type="text" name="DiaChi_Khach_Hang" id="DiaChi_Khach_Hang" value="@kh.DiaChi_Khach_Hang" placeholder="Nhập địa chỉ khách hàng" required="">
+                    </div>
+                    <div style="margin-top: 25px;" class="input-field">
+                        <label> Điện thoại khách hàng </label>
+                        <input style="width: 100%; padding: 12px; border-radius: 50px; border: 1px solid #ccc;" type="text" name="DienThoai_Khach_Hang" id="DienThoai_Khach_Hang" value="@kh.DienThoai_khach_Hang" placeholder="Nhập điện thoại khách hàng" required="">
+                    </div>
+                    <div style="margin-top: 25px;" class="input-field">
+                        <label>Ngày giao</label>
+                        <input style="width: 100%; padding: 12px; border-radius: 50px; border: 1px solid #ccc;" type="date" name="NgayGiao" id="NgayGiao" placeholder="Ngày giao hàng" required="">
+                    </div>
+                </div>
+
+
+                <div style="height: 15px;">
+
+                </div>
+
+                <input style="margin-top: 15px; border-radius: 50px; border: 1px solid #ccc; font-size: 16px; padding: 10px; margin: auto; display: flex; justify-content: center; width: 50%; background-color: lightpink; color: #fff; font-weight: 800;" class="login" type="submit" value="Đặt hàng" />
+
+            </div>
+
+        </div>
+
+    </div>
+</form>
+<h4 style="text-align: center">Thanh toán Online</h4>
+<div class="pay">
+
+    <a href="@Url.Action("Payment","ThanhToan")"><img src="https://vnpay.vn/_nuxt/img/logo-primary.55e9c8c.svg" alt="Alternate Text" width="100px" /></a>
+    <a href="@Url.Action("Payment","momo")"><img src="https://images.viblo.asia/ae87b957-f016-45c0-9c29-34b34a9b3262.png" alt="Alternate Text" width="100px" /></a>
+</div>
+<style>
+    .pay {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+        .pay a {
+            margin: 20px;
+        }
+    .login:hover {
+        cursor: pointer;
+        background-color: deeppink;
+        transition: ease-in-out 0.3s;
+    }
+
+    .password .TenDN {
+        width: 100%;
+        padding: 12px;
+        border-radius: 50px;
+        border: 1px solid #ccc;
+    }
+
+    .input-field label {
+        font-weight: 700;
+        color: var(--heading-color);
+        margin-bottom: 10px;
+        display: block;
+    }
+
+        .input-field label::before {
+            display: inline-flex;
+            margin-right: 7px;
+            margin-left: 5px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+            content: "";
+            border-radius: 3px;
+        }
+</style>
+<!-- fontawesome v5-->
+<script src="~/login/js/fontawesome.js"></script>
+
+

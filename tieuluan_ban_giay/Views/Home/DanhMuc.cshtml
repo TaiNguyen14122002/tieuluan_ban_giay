@@ -1,0 +1,5 @@
+﻿@model IEnumerable<tieuluan_ban_giay.Models.The_Loai>
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("SachTheoTheLoai", "Home", new {id = item.Ma_TheLoai})" class="nav-item nav-link">@item.Ten_TheLoai</a>
+}

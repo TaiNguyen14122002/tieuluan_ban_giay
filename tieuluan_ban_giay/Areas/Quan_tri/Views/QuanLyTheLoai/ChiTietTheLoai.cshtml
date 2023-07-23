@@ -1,0 +1,45 @@
+﻿@model tieuluan_ban_giay.Models.The_Loai
+
+@{
+    ViewBag.Title = "ChiTietTheLoai";
+    Layout = "~/Areas/Quan_tri/Views/_LayoutPage1.cshtml";
+}
+
+<div class="be-content">
+    <div class="main-content container-fluid">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Ma_TheLoai)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ma_TheLoai, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input style="width: 50%; padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="text" id="Ma_TheLoai" name="Ma_TheLoai" value="@Model.Ma_TheLoai" placeholder="" readonly />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ten_TheLoai, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input style="width: 50%; padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="text" id="Ten_TheLoai" name="Ten_TheLoai" value="@Model.Ten_TheLoai" placeholder="" readonly />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <a style="border-radius: 5px;" href="@Url.Action("Sua", new {id =Model.Ma_TheLoai})" class="btn btn-warning" role="button">Sửa</a>
+                    <a style="border-radius: 5px;" href="@Url.Action("Index", new {id =Model.Ma_TheLoai})" class="btn btn-primary" role="button">Trở về</a>
+                </div>
+            </div>
+        </div>
+        }
+
+       
+    </div>
+</div>

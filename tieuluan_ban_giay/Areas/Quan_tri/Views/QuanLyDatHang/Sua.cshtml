@@ -1,0 +1,78 @@
+﻿@model tieuluan_ban_giay.Models.Don_Dat_Hang
+
+@{
+    ViewBag.Title = "Sua";
+    Layout = "~/Areas/Quan_tri/Views/_LayoutPage1.cshtml";
+}
+
+<div class="be-content">
+    <div class="main-content container-fluid">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                
+                
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.So_Don_Hang)
+
+                <div class="form-group">
+                    Tên khách hàng
+                    <div class="col-md-10">
+                        <input style="width: 50%; padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="text" class="form-control" id="Ten_Khach_Hang" name="Ten_Khach_Hang" placeholder="Tên khách hàng" value="@Model.Ten_Khach_Hang" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Địa chỉ
+                    <div class="col-md-10">
+                        <input style="width: 50%; padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="text" class="form-control" id="DiaChi_Khach_Hang" name="DiaChi_Khach_Hang" placeholder="Địa chỉ khách hàng" value="@Model.DiaChi_Khach_Hang" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Số điện thoại
+                    <div class="col-md-10">
+                        <input style="width: 50%; padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="text" class="form-control" id="DienThoai_khach_Hang" name="DienThoai_khach_Hang" placeholder="Số điện thoại" value="@Model.DienThoai_khach_Hang" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Trị giá đơn hàng
+                    <div class="col-md-10">
+                        <input style="width: 50%; padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="text" class="form-control" id="TriGia" name="TriGia" placeholder="Giá trị đơn hàng" value="@Model.TriGia" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Hình thức thanh toán
+                    <div class="col-md-10">
+                        <input style="width: 50%; padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="text" class="form-control" id="HinhThucThanhToan" name="HinhThucThanhToan" placeholder="Hình thức thanh toán" value="@Model.HinhThucThanhToan" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Hình thức giao hàng
+                    <div class="col-md-10">
+                        <input style="width: 50%; padding: 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="text" class="form-control" id="HinhThucGiaoHang" name="HinhThucGiaoHang" placeholder="Hình thức giao hàng" value="@Model.HinhThucGiaoHang" />
+                    </div>
+                </div>
+
+              
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input style="border: 1px solid; border-color: #ccc; padding: 5px; background: #ccc; border-radius: 7px; color: #000; font-size: 14px;" class="btn btn-warning" role="button" type="submit" value="Lưu thông tin"  />
+                    </div>
+                </div>
+            </div>
+        }
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a style="border-radius: 5px;" href="@Url.Action("Index", new {id =Model.So_Don_Hang})" class="btn btn-primary" role="button">Trở về</a>
+
+        </div>
+    </div>
+    </div>
+</div>

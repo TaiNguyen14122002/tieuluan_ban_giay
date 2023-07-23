@@ -1,0 +1,57 @@
+﻿
+@using tieuluan_ban_giay.Models;
+@{
+    Khach_Hang kh = (Khach_Hang)Session["TaiKhoan"];
+
+
+}
+@{
+ViewBag.Title = "Lienhe";
+Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<div class="container-fluid pt-5">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span style="background-color: #f1f1f1;" class="px-2">Liên Hệ</span></h2>
+    </div>
+    <div class="row px-xl-5">
+        <div class="col-lg-7 mb-5">
+            <div class="contact-form">
+                <div id="success"></div>
+                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                    <div class="control-group">
+                        <input type="text" class="form-control" id="name" placeholder="@kh.Ten_Khach_Hang"
+                               required="required" data-validation-required-message="@kh.Ten_Khach_Hang" />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="control-group">
+                        <input style="margin-top: 10px; margin-bottom: 10px;" type="email" class="form-control" id="email" placeholder="@kh.Email"
+                               required="required" data-validation-required-message="@kh.Email" />
+                        <p class="help-block text-danger"></p>
+                    </div>
+
+                    <div class="control-group">
+                        <textarea class="form-control" rows="6" id="message" placeholder="Tin nhắn"
+                                  required="required"
+                                  data-validation-required-message="Xin vui lòng nhập tin nhắn"></textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div >
+                        <a href="~" style="margin-top: 10px;"  class="btn btn-primary py-2 px-4" type="submit"  id="sendMessageButton">
+                            Gửi tin nhắn
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-5 mb-5">
+            <div class="d-flex flex-column mb-3">
+                <h5 class="font-weight-semi-bold mb-3">Địa chỉ cửa hàng</h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>06 Đường Trần Văn Ơn, Phường Phú Hoà, Thành Phố Thủ Dầu Một, Tỉnh Bình Dương</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>2024801030129@student.tdmu.edu.vn</p>
+                <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+84837396190</p>
+            </div>
+        </div>
+    </div>
+</div>
+

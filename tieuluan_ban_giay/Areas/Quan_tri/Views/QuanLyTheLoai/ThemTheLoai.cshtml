@@ -1,0 +1,38 @@
+﻿@model tieuluan_ban_giay.Models.The_Loai
+
+@{
+    ViewBag.Title = "ThemTheLoai";
+    Layout = "~/Areas/Quan_tri/Views/_LayoutPage1.cshtml";
+}
+
+
+<div class="be-content">
+    <div class="main-content container-fluid">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Ten_TheLoai, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input style="width:50%; padding : 10px; border-radius: 5px; border: none; border: 1px solid; border-color: #ccc; margin-left: 20px;" type="text" id="Ten_TheLoai" name="Ten_TheLoai" placeholder="Nhập tên thể loại" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input style="border: 1px solid; border-color: #ccc; padding: 5px; background: #ccc; border-radius: 7px; color: #000; font-size: 14px;" type="submit" value="Thêm thể loại" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+        }
+
+        <div>
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    </div>
+</div>

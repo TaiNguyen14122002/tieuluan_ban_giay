@@ -1,0 +1,178 @@
+﻿@model List<tieuluan_ban_giay.Models.Giay>
+    @using tieuluan_ban_giay.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+    QLBangiayyEntities db = new QLBangiayyEntities();
+    var find = from s in db.Giays
+               orderby s.NgayCapNhat descending 
+               select new
+               {
+                   s.Ma_Giay,
+                   s.Ten_Giay,
+                   s.HinhMinhHoa,
+                   s.DonGia,
+                   s.Gia_Goc
+               };
+    // truy vấn 2 bảng trở lên
+    //var f = from t in db.Giays
+   //         join s in db.CT_DatHang
+      //      on t.Ma_Giay equals s.Ma_Giay
+    //        select new
+      //      {
+                    
+      //      };
+
+}
+
+<!-- Featured Start -->
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                <h5 class="font-weight-semi-bold m-0">Sản phẩm chất lượng</h5>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                <h5 class="font-weight-semi-bold m-0">Miễn phí giao hàng</h5>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                <h5 class="font-weight-semi-bold m-0">Đổi trả trong vòng 14 ngày</h5>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                <h5 class="font-weight-semi-bold m-0">Hỗ trơ 24/7</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured End -->
+<!-- Offer Start -->
+<div class="container-fluid offer pt-5">
+    <div class="row px-xl-5">
+        <div class="col-md-6 pb-4">
+            <div class="position-relative bg-secondary text-center text-md-right text-white mb-2 py-5 px-5">
+                <img src="~/content/img/Shoes/Jordan_Max_Aura_4-removebg-preview.png" alt="">
+                <div class="position-relative" style="z-index: 1;">
+                    <h5 class="text-uppercase text-primary mb-3">Giảm giá 20%</h5>
+                    <h1 class="mb-4 font-weight-semi-bold">Jordan Max Aura 4</h1>
+                    <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Đặt mua</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 pb-4">
+            <div class="position-relative bg-secondary text-center text-md-left text-white mb-2 py-5 px-5">
+                <img src="~/content/img/Shoes/air-jordan-6-retro.png" alt="">
+                <div class="position-relative" style="z-index: 1;">
+                    <h5 class="text-uppercase text-primary mb-3">Giảm giá 20%</h5>
+                    <h1 class="mb-4 font-weight-semi-bold">Air Jordan 6 Retro</h1>
+                    <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Đặt mua</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Offer End -->
+<!-- Products Start -->
+<div class="container-fluid pt-5">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span style="background-color: #f1f1f1" class="px-2">Sản phẩm nổi bật</span></h2>
+    </div>
+    <div class="row px-xl-5 pb-3">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="card product-item border-0 mb-4">
+                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                        <a href="@Url.Action("ChiTietSanPham","Home", new {id = @item.Ma_Giay})"><img class="img-fluid w-100" src="~/Content/img/Shoes/nike/@item.HinhMinhHoa" alt=""></a>
+                        
+                    </div>
+                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                        <h6 class="text-truncate mb-3">@item.Ten_Giay</h6>
+                        <div class="d-flex justify-content-center">
+                            <h6>@String.Format("{0:0,00}", @item.DonGia) VNĐ</h6><h6 class="text-muted ml-2"><del>@String.Format("{0:0,00}", @item.Gia_Goc) VNĐ</del></h6>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between bg-light border">
+                        <a href="@Url.Action("ChiTietSanPham","Home", new {id = @item.Ma_Giay})" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>chi tiết</a>
+                        <a href="@Url.Action("ThemGioHang","GioHang", new { MG =@item.Ma_Giay, url = Request.Url.ToString() })" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    </div>
+<!-- Products End -->
+<!-- Products Start -->
+<div class="container-fluid pt-5">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span style="background-color: #f1f1f1" class="px-2">Sản phẩm mới</span></h2>
+    </div>
+    <div class="row px-xl-5 pb-3">
+        @foreach (var item in find .Take(8))
+        {
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="card product-item border-0 mb-4">
+                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                        <a href="@Url.Action("ChiTietSanPham","Home", new {id = @item.Ma_Giay})"><img class="img-fluid w-100" src="~/Content/img/Shoes/nike/@item.HinhMinhHoa" alt=""></a>
+
+
+                    </div>
+                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                        <h6 class="text-truncate mb-3">@item.Ten_Giay</h6>
+                        <div class="d-flex justify-content-center">
+                            <h6>@String.Format("{0:0,00}", @item.DonGia) VNĐ</h6><h6 class="text-muted ml-2"></h6>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between bg-light border">
+                        <a href="@Url.Action("ChiTietSanPham","Home", new {id = @item.Ma_Giay})" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>chi tiết</a>
+                        <a href="@Url.Action("ThemGioHang","GioHang", new { MG =@item.Ma_Giay, url = Request.Url.ToString() })" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- Products End -->
+<!-- Vendor Start -->
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col">
+            <div class="owl-carousel vendor-carousel">
+                <div class="vendor-item border p-4">
+                    <img src="~/content/img/Shoes/air-jordan-6-retro.png" alt="">
+                </div>
+                <div class="vendor-item border p-4">
+                    <img src="~/content/img/Shoes/nike/Air Jordan XXXVII PF.jpg" alt="">
+                </div>
+                <div class="vendor-item border p-4">
+                    <img src="~/content/img/Shoes/nike/Air Jordan 1 Retro High OG.jpg" alt="">
+                </div>
+                <div class="vendor-item border p-4">
+                    <img src="~/content/img/Shoes/nike/Nike Air Max 90 LTR.jpg" alt="">
+                </div>
+                <div class="vendor-item border p-4">
+                    <img src="~/content/img/Shoes/nike/Nike Court Borough Low 2.jpg" alt="">
+                </div>
+                <div class="vendor-item border p-4">
+                    <img src="~/content/img/Shoes/nike/Nike Flex Runner 2.jpg" alt="">
+                </div>
+                <div class="vendor-item border p-4">
+                    <img src="~/content/img/Shoes/nike/Air Jordan 1 Mid.jpg" alt="">
+                </div>
+                <div class="vendor-item border p-4">
+                    <img src="~/content/img/Shoes/nike/Nike Air Max 90 LTR.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Vendor End -->

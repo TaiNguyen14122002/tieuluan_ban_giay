@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Sing_up";
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="~/login/css/style.css" type="text/css" media="all" />
+}
+
+<form action="~/Home/Sing_up" method="post">
+    <div class="w3l-loginblock signinform">
+        <div class="logo">
+            <a class="brand-logo" href="index.html">Đăng ký</a>
+        </div>
+        <!-- main content -->
+        <div class="row map-content-9">
+            <div class="info-grids">
+                <div style="color: red; display: flex; justify-content: center;">@ViewBag.Error</div>
+                
+                <div class="form-grid">
+                    <div style="margin-top: 25px;" class="input-field">
+                        <label> Địa chỉ </label>
+                        <input style="width: 100%; padding: 12px; border-radius: 50px; border: 1px solid #ccc;" type="text" name="DiaChi_Admin" id="DiaChi_Admin" placeholder="Tên đăng nhập"  >
+                    </div>
+                    <div style="margin-top: 25px;" class="input-field">
+                        <label> Điện thoại </label>
+                        <input style="width: 100%; padding: 12px; border-radius: 50px; border: 1px solid #ccc;" type="text" name="DienThoai" id="DienThoai_Admin" placeholder="Tên đăng nhập"  >
+                    </div>
+                    <div style="margin-top: 25px;" class="input-field">
+                        <label> Email </label>
+                        <input style="width: 100%; padding: 12px; border-radius: 50px; border: 1px solid #ccc;" type="email" name="Email" id="Email_Admin" placeholder="Tên đăng nhập"  >
+                    </div>
+                    
+                    <div style="margin-top: 25px;" class="input-field">
+                        <label> Họ và tên </label>
+                        <input style="width: 100%; padding: 12px; border-radius: 50px; border: 1px solid #ccc;" type="text" name="Ten" id="Ten_Admin" placeholder="Tên đăng nhập"  >
+                    </div>
+                    <div style="margin-top: 25px;" class="input-field">
+                        <label> Tên đăng nhập </label>
+                        <input style="width: 100%; padding: 12px; border-radius: 50px; border: 1px solid #ccc;" type="text" name="TenDN" id="TenDN_Admin" placeholder="Tên đăng nhập"  >
+                    </div>
+                    <div style="margin-top: 25px;" class="input-field">
+                        <label> Mật khẩu</label>
+                        <input style="width: 100%; padding: 12px; border-radius: 50px; border: 1px solid #ccc;" type="password" name="MatKhau" id="MatKhau_Admin" placeholder="Mật khẩu"  >
+                    </div>
+                    
+                </div>
+                
+                
+                <div style="height: 15px;">
+
+                </div>
+                <input style="margin-top: 15px; border-radius: 50px; border: 1px solid #ccc; font-size: 16px; padding: 10px; margin: auto; display: flex; justify-content: center; width: 50%; background-color: lightpink; color: #fff; font-weight: 800;" class="login" type="submit" value="Đăng ký" />
+
+            </div>
+            
+        </div>
+
+    </div>
+    <style>
+        .login:hover {
+            cursor: pointer;
+            background-color: deeppink;
+            transition: ease-in-out 0.3s;
+        }
+
+        .password .TenDN {
+            width: 100%;
+            padding: 12px;
+            border-radius: 50px;
+            border: 1px solid #ccc;
+        }
+
+        .input-field label {
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+            .input-field label::before {
+                display: inline-flex;
+                margin-right: 7px;
+                margin-left: 5px;
+                width: 8px;
+                height: 8px;
+                background-color: var(--primary-color);
+                content: "";
+                border-radius: 3px;
+            }
+    </style>
+    <!-- fontawesome v5-->
+    <script src="~/login/js/fontawesome.js"></script>
+</form>
+

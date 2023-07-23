@@ -1,0 +1,69 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="~/Areas/Quan_tri/Data/img/logo-fav.png">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="~/Areas/Quan_tri/Data/lib/perfect-scrollbar/css/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="~/Areas/Quan_tri/Data/lib/material-design-icons/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="~/Areas/Quan_tri/Data/css/app.css" type="text/css">
+</head>
+<body class="be-splash-screen">
+    <div class="be-wrapper be-login">
+        <div class="be-content">
+            <div class="main-content container-fluid">
+                <div class="splash-container">
+                    <div class="card card-border-color card-border-color-primary">
+                        <div class="card-header"><img class="logo-img" src="~/Areas/Quan_tri/Data/img/logo-xx.png" alt="logo" width="102" height="27"><span class="splash-description">Xin vui lòng nhập thông tin người dùng của bạn</span></div>
+                        <div class="card-body">
+                            <form action="~/Quan_tri/Home/Login" method="post">
+                                <div class="form-group">
+                                    <input class="form-control" id="username" name="TenDN_Admin" type="text" placeholder="Tên đăng nhập" autocomplete="off">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="password" name="MatKhau_Admin" type="password" placeholder="Mật khẩu">
+                                </div>
+                                <div style="color: red; text-align: center;">
+                                    @ViewBag.ThongBao
+                                </div>
+                                <div class="form-group row login-tools">
+                                    <div class="col-6 login-remember">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" id="checkbox1">
+                                            <label class="custom-control-label" for="checkbox1">Nhớ mật khẩu</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 login-forgot-password"><a href="pages-forgot-password.html">Quên mật khẩu?</a></div>
+                                </div>
+
+                                <input style="width: 100%; background-color: #4285f4; border: none; border-radius: 2px; padding: 10px; font-size: 14px; color: #fff;" type="submit" value="Đăng nhập" />
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="~/Areas/Quan_tri/Data/lib/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="~/Areas/Quan_tri/Data/lib/perfect-scrollbar/js/perfect-scrollbar.min.js" type="text/javascript"></script>
+        <script src="~/Areas/Quan_tri/Data/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        <script src="~/Areas/Quan_tri/Data/js/app.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //-initialize the javascript
+                App.init();
+            });
+
+        </script>
+    </div>
+</body>
+</html>

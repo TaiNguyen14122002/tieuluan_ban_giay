@@ -1,0 +1,94 @@
+﻿@using tieuluan_ban_giay.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<tieuluan_ban_giay.Models.Khach_Hang>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Quan_tri/Views/_LayoutPage1.cshtml";
+}
+
+<div class="be-content">
+    <div class="main-content container-fluid">
+        <p>
+            <a style="border-radius: 5px; background-color: #4285f4; color: #fff; border: none;" href="@Url.Action("ThemNguoiDung","QuanLyNguoiDung")" class="btn btn-warning" role="button">Thêm sản phẩm</a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    Tên khách hàng
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+                <th>
+                    Điện thoại
+                </th>
+
+                <th>
+                    Giới tính
+                </th>
+                <th>
+                    Email
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Ten_Khach_Hang
+                    </td>
+                    <td>
+                        @item.DiaChi_Khach_Hang
+                    </td>
+                    <td>
+                        @item.DienThoai_khach_Hang
+                    </td>
+                    <td>
+                        @item.GioiTinh
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                    <td></td>
+                    <td>
+                        <a style="border-radius: 5px;" href="@Url.Action("SuaNguoiDung", new {id =item.Ma_Khach_Hang})" class="btn btn-warning" role="button">Sửa</a>
+                        <a style="border-radius: 5px;" href="@Url.Action("ChiTietNguoiDung", new {id =item.Ma_Khach_Hang})" class="btn btn-primary" role="button">Chi tiết</a>
+
+                        <a style="border-radius: 5px;" href="@Url.Action("XoaNguoiDung", new {id =item.Ma_Khach_Hang})" class="btn btn-danger" role="button">Xoá</a>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <div class="MenuTrang">
+            @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page }))
+        </div>
+        <style>
+            .MenuTrang {
+                display: inline;
+                text-align: center;
+            }
+
+            .pagination {
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                margin-bottom: 0;
+            }
+
+                .pagination li {
+                    padding: 5px;
+                }
+
+            .PagedList-skipToPrevious {
+                padding: 5px;
+                font-size: 14px;
+            }
+        </style>
+    </div>
+</div>

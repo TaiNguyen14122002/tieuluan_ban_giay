@@ -1,0 +1,21 @@
+﻿@using tieuluan_ban_giay.Models;
+@{
+    Khach_Hang kh = (Khach_Hang)Session["TaiKhoan"];
+
+
+}
+
+@if (kh == null)
+{
+    <div class="navbar-nav ml-auto py-0">
+        <a href="@Url.Action("Login", "Home")" class="nav-item nav-link">Đăng nhập</a>
+        <a href="@Url.Action("Sing_up", "Home")" class="nav-item nav-link">Đăng ký</a>
+    </div>
+}
+else
+{
+    <div class="navbar-nav ml-auto py-0">
+        <a href="" class="nav-item nav-link">Xin chào: @kh.Ten_Khach_Hang</a>
+        <a href="@Url.Action("Index","Home")" class="nav-item nav-link">Đăng xuất</a>
+    </div>
+}

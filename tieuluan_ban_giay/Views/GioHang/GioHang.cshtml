@@ -1,0 +1,101 @@
+﻿@using tieuluan_ban_giay.Models;
+@model List<GioHang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Giỏ hàng</h1>
+        
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Cart Start -->
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-8 table-responsive mb-5">
+            <table class="table table-bordered text-center mb-0">
+                <thead class="bg-secondary text-dark">
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td class="align-middle"><img src="~/Content/img/Shoes/nike/@item.HinhMinhHoa" alt="" style="width: 50px;">@item.Ten_Giay</td>
+                                <td class="align-middle">@String.Format("{0:0,00}", @item.DonGia) VNĐ</td>
+                                <td class="align-middle">
+                                    <div class="input-group quantity mx-auto" style="width: 100px;">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-primary btn-minus">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm bg-secondary text-center" name="So_Luong" value="@item.So_Luong">
+                                        <div class="input-group-btn">
+                                            <button  class="btn btn-sm btn-primary btn-plus"> 
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle">@String.Format("{0:0,00}", @item.Thanh_Tien) VNĐ</td>
+                                <td class="align-middle"><a class="btn btn-sm btn-primary" href="@Url.Action("XoaSPKhoiGioHang","GioHang", new {id = item.Ma_Giay})"><i class="fa fa-times"></i></a></td>
+                            </tr>
+                        }
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4">
+            
+            <div class="card border-secondary mb-5">
+                <div class="card-header bg-secondary border-0">
+                    <h4 class="font-weight-semi-bold m-0">Thanh toán</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3 pt-1">
+                        <h6 class="font-weight-medium">Tổng số lượng</h6>
+                        <h6 class="font-weight-medium">@string.Format("{0:#,##0}", ViewBag.TongSoLuong)</h6>
+                    </div>
+                    
+                </div>
+                <div class="card-footer border-secondary bg-transparent">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="font-weight-medium">Tổng tiền</h6>
+                        <h6 class="font-weight-medium">@string.Format("{0:#,##0}", ViewBag.TongTien) VNĐ</h6>
+                    </div>
+                    <button class="btn btn-block btn-primary my-3 py-3">@Html.ActionLink("ĐẶT HÀNG", "DatHang", "GioHang")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart End -->
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="~/Content/lib/easing/easing.min.js"></script>
+<script src="~/Content/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="~/Content/mail/jqBootstrapValidation.min.js"></script>
+<script src="~/Content/mail/contact.js"></script>
+
+<!-- Template Javascript -->
+<script src="~/Content/js/main.js"></script>
+
